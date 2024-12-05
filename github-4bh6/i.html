@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartwatch Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+        }
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .review-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .review-card:hover {
+            transform: scale(1.05);
+        }
+        .review-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .review-card h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 15px;
+        }
+        .review-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .rating {
+            color: #ffd700;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .engagement {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        .engagement span {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Smartwatch Reviews</h1>
+
+    <div class="review-container" id="reviews"></div>
+
+    <script>
+        const reviews = [
+            {
+                name: "Chioma Adebayo",
+                location: "Lagos",
+                date: "March 15, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "This ACE-200 smartwatch has really made life easier for me. I can track my health and stay connected without touching my phone.",
+                likes: 127,
+                comments: 12,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Abe658eb06a044390ade24659f64ef086u.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Oluwaseun Ibrahim",
+                location: "Abuja",
+                date: "March 14, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "The watch face customization is on another level. I can change it anytime I want to match my outfit!",
+                likes: 94,
+                comments: 8,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Aa61635811e8b4329a5960436804527602.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Babajide Ogunleye",
+                location: "Port Harcourt",
+                date: "March 12, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "This watch is great for someone like me who's always on the go. The water resistance is amazing!",
+                likes: 83,
+                comments: 6,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Acbb819ea930a4f2c8519d7fd4870b56aQ.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Folake Adeleke",
+                location: "Ibadan",
+                date: "March 11, 2024",
+                rating: "⭐⭐⭐⭐⭐",
+                review: "I love how it syncs with my social media. I don’t miss notifications anymore!",
+                likes: 112,
+                comments: 9,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/A9ab4e46c0b1e4759af48aeff8c4c534fn.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Amina Yusuf",
+                location: "Kano",
+                date: "March 10, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "Great value for the price. I’ve been using it for weeks and it still works like new.",
+                likes: 76,
+                comments: 5,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Ae6c5010744094217be2f741ece1e0fcf2.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Michael Adewale",
+                location: "Enugu",
+                date: "March 9, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "For an everyday watch, it’s very stylish. Plus, I like how it tracks my steps and calories.",
+                likes: 98,
+                comments: 7,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/A9ab4e46c0b1e4759af48aeff8c4c534fn.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Grace Okoro",
+                location: "Kaduna",
+                date: "March 8, 2024",
+                rating: "⭐⭐⭐⭐⭐",
+                review: "This smartwatch has it all. I use it to control my music, check my messages, and track my fitness. Worth every penny!",
+                likes: 110,
+                comments: 10,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Ac41cde76d80943fb8ce4fb88c1e4f1097.png_220x220.png_.webp"
+            },
+            {
+                name: "Peter Olamide",
+                location: "Jos",
+                date: "March 7, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "It fits well on my wrist and the battery life lasts all day. No complaints here!",
+                likes: 85,
+                comments: 6,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Ac9c72437da9d44e6a33940d67c2e93d3y.png_220x220.png_.webp"
+            },
+            {
+                name: "Titi Akinyemi",
+                location: "Uyo",
+                date: "March 6, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "I’m really impressed with the fitness features. It motivates me to be more active every day!",
+                likes: 92,
+                comments: 6,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Ad4064bd43f8947088bd447d9cbfda0bct.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Chukwudi Okafor",
+                location: "Aba",
+                date: "March 5, 2024",
+                rating: "⭐⭐⭐⭐⭐",
+                review: "I never expected so much from a smartwatch. The calls and texts are crystal clear, even on the move!",
+                likes: 120,
+                comments: 15,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/A986aa740920d4ced85444a238f36e5ca9.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Yetunde Adebayo",
+                location: "Ibadan",
+                date: "March 4, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "I bought it mainly for fitness, and it’s been so helpful. Tracks my heart rate accurately!",
+                likes: 101,
+                comments: 9,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Acc52f3d0bdc84488895228ec75e3cdea7.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Samuel Obinna",
+                location: "Lagos",
+                date: "March 3, 2024",
+                rating: "⭐⭐⭐⭐",
+                review: "If you’re looking for a budget-friendly smartwatch, this one is perfect. It does everything I need!",
+                likes: 75,
+                comments: 5,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/A67867764a0bc421fb668523795ee3a8fE.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Adeola Akinbile",
+                location: "Ondo",
+                date: "March 2, 2024",
+                rating: "⭐⭐⭐⭐⭐",
+                review: "Absolutely love this! The design is sleek and fits my wrist perfectly. I can track my sleep, steps, and even check the weather!",
+                likes: 115,
+                comments: 10,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/A1a7294a6e6094c93849ae4018b1e3e64Z.jpg_220x220.jpg_.webp"
+            },
+            {
+                name: "Yinka Folarin",
+                location: "Ogun",
+                date: "March 1, 2024",
+                rating: "⭐⭐⭐⭐⭐",
+                review: "The fitness tracking is on point. I’ve been using it for a month now, and I can see improvements in my workout routine.",
+                likes: 130,
+                comments: 14,
+                imageUrl: "https://ae-pic-a1.aliexpress-media.com/kf/Ae05013161e2b44c49c254e993537874dH.jpg_220x220.jpg_.webp"
+            }
+        ];
+
+        const reviewContainer = document.getElementById('reviews');
+
+        reviews.forEach(review => {
+            const card = document.createElement('div');
+            card.classList.add('review-card');
+
+            card.innerHTML = `
+                <img src="${review.imageUrl}" alt="${review.name}">
+                <h3>${review.name}</h3>
+                <p>${review.location} | ${review.date}</p>
+                <div class="rating">${review.rating}</div>
+                <p>${review.review}</p>
+                <div class="engagement">
+                    <span>Likes: ${review.likes}</span>
+                    <span>Comments: ${review.comments}</span>
+                </div>
+            `;
+            reviewContainer.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
